@@ -8,8 +8,8 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  @ViewChild('ref') refElem: ElementRef;
-  
+  // @ViewChild('ref') refElem: ElementRef;
+
   products = products;
 
   share() {
