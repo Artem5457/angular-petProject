@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { products } from '../products';
 
@@ -8,6 +8,8 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
+  @ViewChild('ref') refElem: ElementRef;
+  
   products = products;
 
   share() {

@@ -1,26 +1,52 @@
 <h2>Products</h2>
 
-<div *ngFor="let product of products">
-  <h3>
-    <a
-      [title]="product.name + ' details'"
-      [routerLink]="['/products', product.id]"  
-    >
-      {{ product.name }}
-    </a>
-  </h3>
+<div *ngFor="let product of products" class="card">
+  <app-product-preview #ref [product]="product">
+    
+    <div class="description">
+      Description: {{ product.description}}
 
-  <p *ngIf="product.description">
-    Description: {{ product.description}}
-  </p>
+    </div>
 
-  <button (click)="share()">
-    Share
-  </button>
+    <div class="actions">
+      <app-button (click)="share()">
+        Share
+      </app-button>
+  
+      <app-product-alerts
+        [product]="product"
+        (notify)="onNotify()"
+      >
+      </app-product-alerts>
+    </div>
+  </app-product-preview>
+    
+  <!-- <div class="container1">
+    <img src="https://lh3.googleusercontent.com/proxy/mlICvpptuGSDezvxhIqnrI8-BDOhig82Jem8oxddM9G5MTJB5PqtQq96dIe2WCTGAcV41MR06VJk26qYEjeONHXkKiH3cN0BhvWWh2Bx8PaTt48mfFhiHftWX2Ck0Ss4-HtkBjJoGwUbvR5UoFg" alt="">
 
-  <app-product-alerts
-    [product]="product"
-    (notify)="onNotify()"
-  >
-  </app-product-alerts>
+    <h3 style="text-align: center;">
+      <a
+        [title]="product.name + ' details'"
+        [routerLink]="['/products', product.id]"  
+      >
+        {{ product.name }}
+      </a>
+    </h3>
+  
+    <p *ngIf="product.description" style="text-align: center;">
+      Description: {{ product.description}}
+    </p>
+    
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <app-button (click)="share()">
+        Shareцауцау
+      </app-button>
+  
+      <app-product-alerts
+        [product]="product"
+        (notify)="onNotify()"
+      >
+      </app-product-alerts>
+    </div>
+  </div> -->
 </div>
