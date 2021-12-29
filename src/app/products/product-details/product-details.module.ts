@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ButtonModule } from "src/app/button/button.module";
 
 import { ProductDetailsComponent } from "./product-details.component";
 import { ProductDetailsRoutingModule } from "./prouct-details-routing.module";
@@ -8,7 +9,8 @@ import { ProductDetailsRoutingModule } from "./prouct-details-routing.module";
     declarations: [ProductDetailsComponent],
     imports: [
         CommonModule,
-        ProductDetailsRoutingModule
+        ProductDetailsRoutingModule,
+        ButtonModule
     ],
     exports: [ProductDetailsComponent]
 })
