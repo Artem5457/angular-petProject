@@ -1,6 +1,6 @@
 <h2>Products</h2>
 
-<div *ngFor="let product of products" class="card">
+<div *ngFor="let product of products; trackBy: trackByAoiId" class="card">
   <app-product-preview #ref [product]="product">
     
     <div class="description">

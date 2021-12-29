@@ -1,7 +1,7 @@
 <h3>Cart</h3>
 
 <p>
-  <a routerLink="/shipping">Shipping Prices</a>
+  <a (click)="navigateToPrices()">Shipping Prices</a>
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
@@ -9,10 +9,15 @@
   <span>{{ item.price | currency }}</span>
 </div>
 
+<button (click)="doChangeName()">Change name</button>
+
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="name"> Name </label>
     <input id="name" type="text" formControlName="name" />
+  </div>
+  <div *ngIf="checkoutForm.controls['name'].touched && checkoutForm.controls['name'].invalid" class="error">
+    <span style="color: red;">This field is requiered</span>
   </div>
 
   <div>

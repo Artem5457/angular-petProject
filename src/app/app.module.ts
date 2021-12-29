@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ProductsModule } from './products/products.module';
+
 import { AppComponent } from './app.component';
 // import { ProductListComponent } from './product-list/product-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListModule } from './product-list/product-list.module';
+import { HomepageComponent } from './homepage.component';
 // import { ButtonComponent } from './button/button.component';
 // import { ProductDetailsComponent } from './product-details/product-details.component';
 // import { ProductDetailsModule } from './product-details/product-details.module';
@@ -24,6 +26,7 @@ import { ProductListModule } from './product-list/product-list.module';
     AppComponent,
     // ProductListComponent,
     TopBarComponent,
+    HomepageComponent
     // ProductAlertsComponent,
     // ProductDetailsComponent,
     // CartComponent,
@@ -32,20 +35,37 @@ import { ProductListModule } from './product-list/product-list.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ProductListModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '',
-        loadChildren: () => import('./product-list/product-list.module').then((m) => {
-          return m.ProductListModule;
-        })
+      {
+        path: '',
+        component: HomepageComponent
       },
-      { 
-        path: 'products/:productId',
-        loadChildren: () => import('./product-details/product-details.module').then((m) => {
-          return m.ProductDetailsModule;
-        })
+      {
+        path: 'products',
+      loadChildren: () => import('./products/products.module').then((m) => {
+          return m.ProductsModule;
+        }),
       },
+      // { path: 'pr',
+      //   loadChildren: () => import('./products/product-list/product-list.module').then((m) => {
+      //     return m.ProductListModule;
+      //   }),
+      //   children: [
+      //     {
+      //       path: 'products/:productId',
+      //       loadChildren: () => import('./products/product-details/product-details.module').then((m) => {
+      //         return m.ProductDetailsModule;
+      //       })
+      //     }
+      //   ]
+      // },
+      // {
+      //   path: 'products/:productId',
+      //   loadChildren: () => import('./products/product-details/product-details.module').then((m) => {
+      //     return m.ProductDetailsModule;
+      //   })
+      // },
       {
         path: 'cart',
         loadChildren: () => import('./cart/cart.module').then((m) => {
